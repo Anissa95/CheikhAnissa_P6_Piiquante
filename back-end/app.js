@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -6,8 +7,9 @@ const sauceRoutes = require('./routes/sauce');
 const path = require('path');
 
 
+
 // Connexion à la base de données
-mongoose.connect('mongodb+srv://anissa:Fodil95@cluster0.cr4rr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(process.env.Mongo_db, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
