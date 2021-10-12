@@ -2,11 +2,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 // Importation de crypto-js pour chiffrer le mail 
 const cryptojs = require('crypto-js');
-
 //Importation pour l'utilisation des variables d'environnements
 require('dotenv').config();
 const User = require('../models/user');
-
 exports.signup = (req, res, next) => {
     //Chiffrer l'email avant l'envoi a la BD
     const emailCryptoJs = cryptojs.HmacSHA256(req.body.email, `${process.env.CRYPTOJS_EMAIL}`).toString();
@@ -23,7 +21,6 @@ exports.signup = (req, res, next) => {
         })
         .catch(error => res.status(500).json({ error }));
 };
-
 exports.login = (req, res, next) => {
     const emailCryptoJs = cryptojs.HmacSHA256(req.body.email, `${process.env.CRYPTOJS_EMAIL}`).toString();
     User.findOne({ email: emailCryptoJs })

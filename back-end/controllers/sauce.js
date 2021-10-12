@@ -1,5 +1,4 @@
 const Sauce = require('../models/sauce');
-
 const fs = require('fs');
 //Affichage de toutes les sauces 
 exports.getAllSauce = (req, res, next) => {
@@ -7,14 +6,12 @@ exports.getAllSauce = (req, res, next) => {
         .then(sauces => res.status(200).json(sauces))
         .catch(error => res.status(400).json({ error }));
 };
-
 //Affichage d'une sauce 
 exports.getOneSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => res.status(200).json(sauce))
         .catch(error => res.status(404).json({ error }));
 };
-
 //Création de sauce
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);
@@ -32,7 +29,6 @@ exports.createSauce = (req, res, next) => {
             res.status(400).json({ error });
         });
 };
-
 //Modification d'une sauce
 exports.updateSauce = (req, res, next) => {
     if (req.file) {
@@ -60,7 +56,6 @@ exports.updateSauce = (req, res, next) => {
             .catch(error => res.status(400).json({ error }));
     }
 };
-
 //Supression d'une sauce 
 exports.deleteSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
@@ -74,7 +69,6 @@ exports.deleteSauce = (req, res, next) => {
         })
         .catch(error => res.status(500).json({ error }));
 };
-
 // Like et dislike une sauce  
 exports.likeSauce = (req, res, next) => {
     const userId = req.body.userId;
@@ -109,7 +103,6 @@ exports.likeSauce = (req, res, next) => {
                 case -1: // CAS: sauce disliked
                     newValues.usersDisliked.push(userId);
                     break;
-
             };
             // Calcul du nombre de likes / dislikes
             newValues.likes = newValues.usersLiked.length;

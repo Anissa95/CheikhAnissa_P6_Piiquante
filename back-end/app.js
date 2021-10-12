@@ -6,8 +6,6 @@ const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 const path = require('path');
 
-
-
 // Connexion à la base de données
 mongoose.connect(process.env.Mongo_db, {
         useNewUrlParser: true,
@@ -15,7 +13,6 @@ mongoose.connect(process.env.Mongo_db, {
     })
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
-
 const app = express();
 // Configuration cors
 app.use((req, res, next) => {
@@ -24,14 +21,11 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
-
-
 // Parse le body des requetes en json
 app.use(bodyParser.json());
 //    ROUTES
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
-
 
 module.exports = app;
