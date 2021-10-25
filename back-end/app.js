@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const helmet = require("helmet");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
@@ -14,6 +15,7 @@ mongoose.connect(process.env.Mongo_db, {
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 const app = express();
+app.use(helmet());
 // Configuration cors
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
