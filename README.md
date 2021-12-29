@@ -1,23 +1,26 @@
-# HOT TAKES #
+## ProjetN°6: ##
 
-## Installation ##
+Construire une API sécurisée pour une application d'avis gastronomiques
 
-Here are the dependancies you need to install:
-- NodeJS 12.14 or 14.0.
-- Angular CLI 7.0.2.
-- node-sass : make sure to use the corresponding version to NodeJS. For Noe 14.0 for instance, you need node-sass in version 4.14+.
+## Le but du projet ##
 
-On Windows, these installations require to use PowerShell in administrator mode.
+construire le back-end (API) de la premiere version d'une application web de critique de sauces piquantes "Hot Takes" proposant une galerie de sauces, permettant de télécharger ses propres sauces et de liker/disliker les sauces que d'autres partagent. L'API doit être construite selon des pratiques de code sécurisées.
 
-The, clone this repo and run `npm install`.
+Le front-end est fourni.
 
+## Installation des indépendances ##
 
-## Usage ##
+-express
+-bcrypt
+-crypto.js
+-jsonwebtoken
+-mongoose
+-mongoose-unique-validator
+-Multer
+-helmet
 
-Run `npm start`. This should both run the local server and launch your browser.
+## Technologies & frameworks utilisés ##
 
-If your browser fails to launch, or shows a 404 error, navigate your browser to http://localhost:8080.
-
-The app should reload automatically when you make a change to a file.
-
-Use `Ctrl+C` in the terminal to stop the local server.
+-Javascript
+-API REST Node.js / Express
+-MongoDB
